@@ -1,10 +1,21 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Marketplace from './components/Marketplace';
 
 function App() {
   return (
-    <div className="App">
-HELLO
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Routes>
+          <Route path='/' element={
+            <Marketplace />
+          }></Route>
+          <Route path='*' element={
+            <p>404 not found</p>
+          }></Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

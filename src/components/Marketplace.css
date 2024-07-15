@@ -1,0 +1,18 @@
+.offer-content {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 27px;
+    margin: 20px 0;
+}
+
+@media screen and (max-width: 1023px) {
+    .offer-content {
+        column-gap: 17px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .offer-content {
+        flex-direction: column;
+    }
+}
