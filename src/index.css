@@ -1,13 +1,50 @@
+/* --- Specification --- */
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	font-family: 'Inter', sans-serif;
+	font-size: 17px;
+	font-weight: 400;
+	letter-spacing: 0em;
+	color: #FFF;
+  	background-color: #181818;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+div, p, a, span {
+	box-sizing: border-box;
+}
+
+button, input {
+	transition: all .3s ease;
+}
+
+ul, li {
+	display: block;
+	padding: 0;
+	margin: 0;
+	transition: all .3s ease;
+}
+
+p {
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Inter',  sans-serif;
+	padding: 0;
+	margin: 0;
+	letter-spacing: 0.em;
+}
+
+a, a:hover, a:active, i {
+	text-decoration: none;
+	outline: none;
+	transition: all .3s ease;
+}
+
+select, input, input:hover, input:focus, input:active,
+button, button:hover, button:focus, button:active 
+	{
+	outline: none;
 }
