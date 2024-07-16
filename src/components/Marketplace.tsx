@@ -1,8 +1,9 @@
 import './Marketplace.css';
 import Filtermenu from "./Filtermenu";
 import Market from "./Market";
+import { FC } from 'react';
 
-const Marketplace = () => {
+const Marketplace : FC = () => {
     return(
         <main className="offer-content">
             <Filtermenu />

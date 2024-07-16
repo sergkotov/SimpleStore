@@ -26,6 +26,11 @@
 .price-filter__icon {
     display: flex;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    border: none;
+    outline: none;
 }
 
 .price-filter__more {

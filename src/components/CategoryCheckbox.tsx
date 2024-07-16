@@ -1,4 +1,4 @@
-export default function CategoryCheckbox() {
+const CategoryCheckbox = () => {
     return(
         <label className="type-filter__checkbox">
             <input type="checkbox" defaultChecked/>
@@ -7,4 +7,6 @@ export default function CategoryCheckbox() {
         </label>
     );
 };
+
+export default CategoryCheckbox;
 
