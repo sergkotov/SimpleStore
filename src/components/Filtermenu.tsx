@@ -1,6 +1,6 @@
 import './Filtermenu.css';
 import CategoryCheckbox from './CategoryCheckbox';
-import { FC, FunctionComponent } from 'react';
+import { FC } from 'react';
 
 const Filtermenu : FC = () => {
     return(

@@ -1,4 +1,6 @@
-const CategoryCheckbox = () => {
+import { FC } from "react";
+
+const CategoryCheckbox : FC = () => {
     return(
         <label className="type-filter__checkbox">
             <input type="checkbox" defaultChecked/>

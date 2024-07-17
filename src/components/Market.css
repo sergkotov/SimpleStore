@@ -1,0 +1,239 @@
+.store {
+    padding-bottom: 80px;
+}
+
+.store-items {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 34px;
+    column-gap: 23px;
+    min-width: 835px;
+}
+
+.store-item {
+    display: block;
+    position: relative;
+    flex: 0 0 263px;
+    border-radius: 20px;
+    border: 3px solid #DCA24C;
+    background: #000;
+    padding-bottom: 24px;
+    order: 1;
+}
+
+.store-item_active {
+    display: block;
+}
+
+.store-item:hover {
+    box-shadow: 0px 4px 2px 0px rgba(220, 162, 76, 0.77);
+}
+
+.store-item:nth-child(1 of .store-item_active),
+.store-item:nth-child(2 of .store-item_active),
+.store-item:nth-child(3 of .store-item_active) {
+    order: -1;
+}
+
+.store-item__pics {
+    width: 100%;
+    min-height: 270px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.store-item__img {
+    width: 100%;
+    display: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.store-item__img_active {
+    display: block;
+}
+
+.store-item__info {
+    min-height: 208px;
+    padding: 0px 0 24px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    max-width: 233px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.store-item__sales {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-item__salenum {
+    height: 24px;
+    padding: 4px;
+    border-radius: 20px;
+    background: #FF0000;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.store-item__title {
+    color: #F1FFFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    text-align: center;
+}
+
+.store-item__price {
+    color: #F1FFFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: center;
+}
+
+.store-item__price > span {
+    font-weight: 700;
+    position: relative;
+}
+
+.store-item__price_old ~ .store-item__price> span::before {
+    content: '';
+    position: absolute;
+    width: 65px;
+    height: 11px;
+    background: url('../../public/img/sale-line-icon.svg');
+    top: 5px;
+    left: -3px;
+}
+
+.store-item__colors {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.store-item__color {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #C4C4C4;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.store-item__color_active {
+    border: 2px solid transparent;
+}
+
+.store-item__buybtn {
+    display: block;
+    width: 185px;
+    height: 49px;
+    border-radius: 20px;
+    background: #DCA24C;
+    color: #F1FFFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 49px;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.store-item__props {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.store-item__props_new, .store-item__props_sale {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #DCA24C;
+    background: #181818;
+    color: #DCA24C;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 50px;
+    letter-spacing: -0.13px;
+}
+
+.store-pagination {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 14px;
+}
+
+.store-pagination__item {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.store-pagination__delim {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.store-pagination__item_active {
+    color: #DCA24C;
+}
+
+@media screen and (max-width: 1279px) {
+    .store-items {
+        min-width: 703px;
+    }
+}
+
+
+@media screen and (max-width: 1023px) {
+    .store-items {
+        column-gap: 19px;
+        min-width: 457px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .store-items {
+        column-gap: 13px;
+        min-width: 335px;
+    }
+}

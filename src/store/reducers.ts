@@ -1,5 +1,5 @@
-import { allGoods } from "../api"
-import { UserAction } from "../types/storeTypes"
+import { allGoods } from "../api";
+import { UserAction } from "../types/storeTypes";
 
 const initialState = {
     data: allGoods
