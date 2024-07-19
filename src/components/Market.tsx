@@ -20,8 +20,6 @@ const Market : FC= () => {
         }
     }, [page]);
 
-    // fromEl={6*(page-1)} toEl={6*(page)}
-
     return(
         <section className="store">
                 <ul className="store-items">

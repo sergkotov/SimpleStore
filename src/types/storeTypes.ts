@@ -3,7 +3,7 @@ export interface UserAction {
     payload: FilterDetails;
 }
 
-interface FilterDetails {
+export interface FilterDetails {
     priceFrom: number;
     priceTo: number;
     new?: boolean;

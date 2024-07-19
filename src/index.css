@@ -49,3 +49,15 @@ button, button:hover, button:focus, button:active
 	{
 	outline: none;
 }
+
+.d-none {
+	display: none;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.d-block {
+	display: block;
+}

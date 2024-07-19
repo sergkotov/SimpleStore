@@ -33,8 +33,12 @@
     outline: none;
 }
 
-.price-filter__more {
-    display: none;
+.price-filter__icon > svg {
+    transition: all 0.3s ease;
+}
+
+.price-filter__icon_rotate {
+    transform : rotate(180deg);
 }
 
 .price-filter__filter {

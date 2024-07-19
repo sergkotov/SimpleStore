@@ -1,4 +1,4 @@
-import { GoodCard } from "./types/storeTypes";
+import { GoodCard, FilterDetails } from "./types/storeTypes";
 
 //api simulation
 function getData() : GoodCard[] {
@@ -107,4 +107,23 @@ export function mustHaveIndex(arr: string[] | undefined, ind: number) {
 export function endingsForWords(num: number, str: string[]) {
     const cases = [2, 0, 1, 1, 1, 2];
     return str[(num % 100 > 4 && num % 100 < 20) ? 2 : cases[(num % 10 < 5) ? num % 10 : 5]];
+}
+
+export function filterStoreItems(item : GoodCard, payload: FilterDetails) {
+    if(item.price < payload.priceFrom || item.price > payload.priceTo)
+        return false;
+    if(payload.new && !item.new)
+        return false;
+    if(payload.sale && !item.sale)
+        return false;
+    return true;
+}
+
+export function findMaxPrice(arr: GoodCard[]) : number {
+    let maxPrice = 0;
+    arr.forEach(item => {
+        if(item.price > maxPrice)
+            maxPrice = item.price;
+    });
+    return maxPrice;
 }

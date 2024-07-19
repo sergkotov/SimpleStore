@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, ReactEventHandler, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { ProductProps } from "../types/storeTypes";
 import { mustHaveIndex, endingsForWords } from "../api";
 
