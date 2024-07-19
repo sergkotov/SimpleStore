@@ -3,7 +3,7 @@ import './Market.css';
 import { FC, useEffect, useState, useCallback } from "react";
 import { selectList } from "../store/selectors";
 import Product from "./Product";
-import { GoodCard, MouseButtonEvent } from "../types/storeTypes";
+import { GoodCard} from "../types/storeTypes";
 import Pagination from "./Paginator";
 
 const Market : FC= () => {

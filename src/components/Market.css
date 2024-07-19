@@ -38,7 +38,7 @@
 
 .store-item__pics {
     width: 100%;
-    min-height: 270px;
+    min-height: 400px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
@@ -129,7 +129,7 @@
 .store-item__color {
     width: 24px;
     height: 24px;
-    border: 2px solid #C4C4C4;
+    border: 2px solid #f1f1ff;
     border-radius: 50%;
     cursor: pointer;
 }

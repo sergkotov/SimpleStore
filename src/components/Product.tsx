@@ -1,10 +1,11 @@
-import { FC, useEffect, useState } from "react";
+import { FC, MouseEventHandler, ReactEventHandler, useEffect, useState } from "react";
 import { ProductProps } from "../types/storeTypes";
 import { mustHaveIndex, endingsForWords } from "../api";
 
 
 
 const Product: FC<ProductProps> = (props: ProductProps) => {
+    const [slideNum, setSlideNum] = useState<number>(0);
 
     return (
         <li className="store-item">
@@ -15,7 +16,8 @@ const Product: FC<ProductProps> = (props: ProductProps) => {
             <div className="store-item__pics">
                 {
                     props.product.colors && props.product.colors.map((_, index) => (
-                        <img src={mustHaveIndex(props.product.img, index)} className="store-item__img" alt="" />
+                        <img src={mustHaveIndex(props.product.img, index)} key={index} 
+                            className={"store-item__img" + (index===slideNum ? ' store-item__img_active' : '')} alt="" />
                     )
                 )}
             </div>
@@ -32,8 +34,10 @@ const Product: FC<ProductProps> = (props: ProductProps) => {
                 </div>}
                 <div className="store-item__colors">
                 {
-                    props.product.colors && props.product.colors.map((color) => 
-                        <div className="store-item__color" style={{ background: color}}></div>
+                    props.product.colors && props.product.colors.map((color, index) => 
+                        <button className={"store-item__color" + (index===slideNum ? ' store-item__color_active' : '')} 
+                            key={index} style={{ background: color}}
+                            onClick={() => setSlideNum(index)}></button>
                     )
                 }
                 </div>
