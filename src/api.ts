@@ -1,4 +1,5 @@
 import { GoodCard, FilterDetails } from "./types/storeTypes";
+import { useState, useEffect } from 'react';
 
 //api simulation
 function getData() : GoodCard[] {
@@ -126,4 +127,15 @@ export function findMaxPrice(arr: GoodCard[]) : number {
             maxPrice = item.price;
     });
     return maxPrice;
+}
+
+export const useDebounce = <T>(value: T, delay = 200) => {
+    const [debouncedValue, setDebouncedValue] = useState<T>(value);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+        return () => {clearTimeout(timer);};
+    }, [value, delay]);
+    return debouncedValue;
 }

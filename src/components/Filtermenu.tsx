@@ -6,9 +6,11 @@ import { selectList } from '../store/selectors';
 import { findMaxPrice } from '../api';
 
 const Filtermenu : FC = () => {
-    const [priceOpen, setPriceOpen] = useState<boolean>(true);
-    const [maxPrice, setMaxPrice] = useState<number>(1000000);
-    const [flag, setFlag] = useState<boolean>(false);
+    const [flag, setFlag] = useState(false);
+    const [priceOpen, setPriceOpen] = useState(true);
+    const [maxPrice, setMaxPrice] = useState(1000000);
+    const [fromPrice, setFromPrice] = useState(0);
+
 
     function refresh() {
         setFlag(prevState => !prevState);
@@ -41,19 +43,20 @@ const Filtermenu : FC = () => {
                 <div className={"price-filter__filter" + (priceOpen ? '' : ' d-none')}>
                     <div className="price-filter__title">Цена</div>
                     <div className="price-filter__slider">
-                        <div className="price-filter__progress"></div>
+                        <div className="price-filter__progress" style={{left: fromPrice/maxPrice*100 + '%', right: "0%"}}></div>
                     </div>
                     <div className="price-filter__range">
-                        <input type="range" className="price-filter__range_min" min="0" max={maxPrice} value="0" />
-                        <input type="range" className="price-filter__range_max" min="0" max={maxPrice}  value={maxPrice} />
+                        <input type="range" className="price-filter__range_min" min="0" max={maxPrice} value={fromPrice} 
+                            onChange={(evt) => setFromPrice(+evt.target.value)}/>
+                        <input type="range" className="price-filter__range_max" min={fromPrice} max={maxPrice}  value={maxPrice} />
                     </div>
                     <div className="price-filter__wrap">
                         <div className="price-filter__number price-filter__from">
-                            <input type="number" className="price-filter__min" min="0" max={maxPrice} value="0" />
+                            <input type="number" className="price-filter__min" min="0" max={maxPrice} value={fromPrice} />
                         </div>
                         <div className="price-filter__span">до</div>
                         <div className="price-filter__number price-filter__to">
-                            <input type="number" className="price-filter__max" min="0" max={maxPrice}  value={maxPrice} />
+                            <input type="number" className="price-filter__max" min={fromPrice} max={maxPrice}  value={maxPrice} />
                         </div>
                     </div>
                 </div>
