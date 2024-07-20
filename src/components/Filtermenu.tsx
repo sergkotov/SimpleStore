@@ -1,7 +1,7 @@
 import { store } from '../store';
 import './Filtermenu.css';
 import CategoryCheckbox from './CategoryCheckbox';
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState, useCallback } from 'react';
 import { selectList } from '../store/selectors';
 import { findMaxPrice } from '../api';
 import { useDebounce } from '../api';
@@ -35,8 +35,19 @@ const Filtermenu : FC = () => {
         const currToValue = +evt.target.value;
         setToPrice(currToValue);
         if(fromPrice > currToValue)
-            setFromPrice(currToValue);        
+            setFromPrice(currToValue);
     }
+
+    const handleCheckboxClick = (name: string) => {
+        console.log(name, ' ', checkboxes)
+        setCheckboxes((prevState) => {
+            if(name === "new" || name === "sale") {
+                prevState[name] = !prevState[name];
+            }
+            return prevState;
+        });
+        store.dispatch(setFilter(fromPrice, toPrice, checkboxes.new, checkboxes.sale));
+    };
 
     useEffect(() => {
         store.dispatch(setFilter(fromPrice, toPrice, checkboxes.new, checkboxes.sale));
@@ -72,13 +83,14 @@ const Filtermenu : FC = () => {
                         </div>
                         <div className="price-filter__span">до</div>
                         <div className="price-filter__number price-filter__to">
-                            <input type="number" className="price-filter__max" min="0" max={maxPrice}  value={toPrice} />
+                            <input type="number" className="price-filter__max" min="0" max={maxPrice} value={toPrice} />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="type-filter">
-                <CategoryCheckbox/>
+                <CategoryCheckbox name={"new"} value={"Новинки"} onClickCheckbox={handleCheckboxClick}/>
+                <CategoryCheckbox name={"sale"} value={"Распродажи"} onClickCheckbox={handleCheckboxClick}/>
             </div>
         </div>
     );

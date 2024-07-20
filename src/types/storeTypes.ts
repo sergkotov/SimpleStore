@@ -41,4 +41,10 @@ export type PaginationProps = {
     }
 }
 
+export type CategoryCheckboxProps = {
+    name: string;
+    value: string;
+    onClickCheckbox: (type: string) => void;
+}
+
 export type MouseButtonEvent = React.MouseEvent<HTMLButtonElement>
