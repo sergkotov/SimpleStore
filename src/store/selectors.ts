@@ -1,7 +1,4 @@
 import { StoreType, GoodCard } from "../types/storeTypes";
-export function selectAllList(state: StoreType) : StoreType {
-    return state;
-}
 
 export function selectList(state: StoreType) : GoodCard[] {
     return state.data;

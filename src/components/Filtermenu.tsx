@@ -1,7 +1,7 @@
 import { store } from '../store';
 import './Filtermenu.css';
 import CategoryCheckbox from './CategoryCheckbox';
-import { ChangeEvent, FC, useEffect, useState, useCallback } from 'react';
+import { ChangeEvent, FC, useEffect, useState} from 'react';
 import { selectList } from '../store/selectors';
 import { findMaxPrice } from '../api';
 import { useDebounce } from '../api';
@@ -39,7 +39,6 @@ const Filtermenu : FC = () => {
     }
 
     const handleCheckboxClick = (name: string) => {
-        console.log(name, ' ', checkboxes)
         setCheckboxes((prevState) => {
             if(name === "new" || name === "sale") {
                 prevState[name] = !prevState[name];

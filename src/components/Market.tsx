@@ -1,7 +1,7 @@
 import { store } from "../store";
 import './Market.css';
 import { FC, useEffect, useState, useCallback } from "react";
-import { selectAllList, selectFilteredList, selectList } from "../store/selectors";
+import { selectFilteredList, selectList } from "../store/selectors";
 import Product from "./Product";
 import { GoodCard} from "../types/storeTypes";
 import Pagination from "./Paginator";
@@ -34,7 +34,6 @@ const Market : FC= () => {
 
     useEffect(() => {
         const state = store.getState();
-        const list1 = selectAllList(state);
         const list = selectFilteredList(state);
         setProducts(list);
     }, [flag]);
