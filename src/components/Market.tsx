@@ -1,15 +1,18 @@
 import { store } from "../store";
 import './Market.css';
 import { FC, useEffect, useState, useCallback } from "react";
-import { selectList } from "../store/selectors";
+import { selectAllList, selectFilteredList, selectList } from "../store/selectors";
 import Product from "./Product";
 import { GoodCard} from "../types/storeTypes";
 import Pagination from "./Paginator";
 
 const Market : FC= () => {
     const ELEMENTS_PER_PAGE = 6;
+    const [flag, setFlag] = useState(false);
     const [products, setProducts] = useState<GoodCard[]>([]);
     const [page, setPage] = useState<number>(1);
+
+
     useEffect(() => {
         setProducts(selectList(store.getState()));
     }, []);
@@ -19,6 +22,22 @@ const Market : FC= () => {
             setPage(newPage);
         }
     }, [page]);
+
+    function refresh() {
+        setFlag(prevState => !prevState);
+    }
+
+    useEffect(() => {
+        const unsubscribe = store.subscribe(refresh);
+        return () => {unsubscribe()};
+    }, []);
+
+    useEffect(() => {
+        const state = store.getState();
+        const list1 = selectAllList(state);
+        const list = selectFilteredList(state);
+        setProducts(list);
+    }, [flag]);
 
     return(
         <section className="store">

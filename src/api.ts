@@ -111,12 +111,18 @@ export function endingsForWords(num: number, str: string[]) {
 }
 
 export function filterStoreItems(item : GoodCard, payload: FilterDetails) {
-    if(item.price < payload.priceFrom || item.price > payload.priceTo)
+    let itemPrice = item.price;
+    if (item.salePrice)
+        itemPrice = item.salePrice;
+    if(itemPrice < payload.priceFrom || itemPrice > payload.priceTo){
         return false;
-    if(payload.new && !item.new)
+    }
+    if(!payload.new && item.new){
         return false;
-    if(payload.sale && !item.sale)
+    }
+    if(!payload.sale && item.sale){
         return false;
+    }
     return true;
 }
 

@@ -25,6 +25,7 @@ export interface GoodCard {
 
 export interface StoreType {
     data: GoodCard[];
+    filteredData: GoodCard[];
 }
 
 export interface ProductProps {

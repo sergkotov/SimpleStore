@@ -1,16 +1,18 @@
 import { allGoods, filterStoreItems } from "../api";
-import { StoreType, UserAction } from "../types/storeTypes";
+import { UserAction } from "../types/storeTypes";
 
 const initialState = {
-    data: allGoods
+    data: allGoods,
+    filteredData: allGoods
 }
 
-export const  rootReducer = (state = initialState, action : UserAction) => {
-    let newData : StoreType = {data: []};
+export const  rootReducer = (state = initialState, action: UserAction) => {
+    let newData;
     switch(action.type) {
-        case 'filter':
-            newData.data = state.data.filter(item => filterStoreItems(item, action.payload));
-            return newData;
+        case 'store/filter':
+            newData = [...state.data].filter(item => filterStoreItems(item, action.payload));
+            state.filteredData = newData;
+            return {...state};
         default:
             return state;
     }

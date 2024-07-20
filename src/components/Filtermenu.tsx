@@ -1,31 +1,46 @@
 import { store } from '../store';
 import './Filtermenu.css';
 import CategoryCheckbox from './CategoryCheckbox';
-import { FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { selectList } from '../store/selectors';
 import { findMaxPrice } from '../api';
+import { useDebounce } from '../api';
+import { setFilter } from '../store/actionCreators';
 
 const Filtermenu : FC = () => {
-    const [flag, setFlag] = useState(false);
     const [priceOpen, setPriceOpen] = useState(true);
     const [maxPrice, setMaxPrice] = useState(1000000);
     const [fromPrice, setFromPrice] = useState(0);
-
-
-    function refresh() {
-        setFlag(prevState => !prevState);
-    }
-
-    useEffect(() => {
-        const unsubscribe = store.subscribe(refresh);
-        return () => {unsubscribe()};
-    }, []);
+    const [toPrice, setToPrice] = useState(1000000);
+    const [checkboxes, setCheckboxes] = useState({new: true, sale: true});
+    const debouncedFromPrice = useDebounce(fromPrice, 120);
+    const debouncedToPrice = useDebounce(toPrice, 120);
 
     useEffect(() => {
         const state = store.getState();
         const list = selectList(state);
-        setMaxPrice(findMaxPrice(list));
-    }, [flag]);
+        const maxPriceValue = findMaxPrice(list);
+        setMaxPrice(maxPriceValue);
+        setToPrice(maxPriceValue);
+    }, []);
+
+    function handleFromPriceInput(evt: ChangeEvent<HTMLInputElement>) {
+        const currFromValue = +evt.target.value;
+        setFromPrice(currFromValue);
+        if(toPrice < currFromValue)
+            setToPrice(currFromValue);
+    }
+
+    function handleToPriceInput(evt: ChangeEvent<HTMLInputElement>) {
+        const currToValue = +evt.target.value;
+        setToPrice(currToValue);
+        if(fromPrice > currToValue)
+            setFromPrice(currToValue);        
+    }
+
+    useEffect(() => {
+        store.dispatch(setFilter(fromPrice, toPrice, checkboxes.new, checkboxes.sale));
+    }, [debouncedFromPrice, debouncedToPrice]);
 
     return(
         <div className="offer-filters">
@@ -43,12 +58,13 @@ const Filtermenu : FC = () => {
                 <div className={"price-filter__filter" + (priceOpen ? '' : ' d-none')}>
                     <div className="price-filter__title">Цена</div>
                     <div className="price-filter__slider">
-                        <div className="price-filter__progress" style={{left: fromPrice/maxPrice*100 + '%', right: "0%"}}></div>
+                        <div className="price-filter__progress" style={{left: fromPrice/maxPrice*100 + "%", right: 100 - toPrice/maxPrice*100 + "0%"}}></div>
                     </div>
                     <div className="price-filter__range">
                         <input type="range" className="price-filter__range_min" min="0" max={maxPrice} value={fromPrice} 
-                            onChange={(evt) => setFromPrice(+evt.target.value)}/>
-                        <input type="range" className="price-filter__range_max" min={fromPrice} max={maxPrice}  value={maxPrice} />
+                            onChange={(evt) => handleFromPriceInput(evt)}/>
+                        <input type="range" className="price-filter__range_max" min="0" max={maxPrice}  value={toPrice} 
+                            onChange={(evt) => handleToPriceInput(evt)}/>
                     </div>
                     <div className="price-filter__wrap">
                         <div className="price-filter__number price-filter__from">
@@ -56,7 +72,7 @@ const Filtermenu : FC = () => {
                         </div>
                         <div className="price-filter__span">до</div>
                         <div className="price-filter__number price-filter__to">
-                            <input type="number" className="price-filter__max" min={fromPrice} max={maxPrice}  value={maxPrice} />
+                            <input type="number" className="price-filter__max" min="0" max={maxPrice}  value={toPrice} />
                         </div>
                     </div>
                 </div>
