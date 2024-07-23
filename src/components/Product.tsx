@@ -42,7 +42,7 @@ const Product: FC<ProductProps> = (props: ProductProps) => {
                 }
                 </div>
             </div>
-            <a href="#yellow" className="store-item__buybtn">Купить</a>
+            <a href={`/market/${props.product.id}`} className="store-item__buybtn">Купить</a>
         </li>
     );
 }

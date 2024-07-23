@@ -32,6 +32,12 @@ export interface ProductProps {
     product: GoodCard;
 }
 
+export interface SingleProductProps {
+    product: GoodCard;
+    slide: number;
+    newSlide: (slide: number) => void;
+}
+
 export type PaginationProps = {
     onChangePage: (newPage: number) => void;
     perPage: number;

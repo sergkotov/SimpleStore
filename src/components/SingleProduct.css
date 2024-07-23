@@ -1,0 +1,114 @@
+.card-wrap {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 77px;
+    margin-bottom: 24px;
+}
+
+.card-prev-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: #FFF;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.card-prev-link__icon {
+    transform: rotate(90deg);
+}
+
+.card-slider-main {
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    border: 3px solid #DCA24C;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    width: 800px;
+    height: 600px;
+    min-height: 600px;
+    margin-bottom: 32px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 200%;
+}
+
+.card-slider-main__img {
+    position: relative;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.card-slider-main__zoom {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.card-slider-props {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.card-slider-props-new, .card-slider-props-sale {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #DCA24C;
+    color: #DCA24C;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 46px;
+    letter-spacing: -0.13px;
+    border-radius: 50%;
+    background: #181818;
+}
+
+.card-sliderline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.card-sliderline-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    border: 3px solid #000;
+    cursor: pointer;
+}
+
+.card-sliderline-img {
+    border-radius: 17px;
+    height: 100%;
+}
+
+.card-sliderline-item_active {
+    border: 3px solid #DCA24C;
+}

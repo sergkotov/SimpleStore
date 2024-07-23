@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Marketplace from './components/Marketplace';
+import SingleProduct from './components/SingleProduct';
 
 function App() {
 
@@ -10,6 +11,9 @@ function App() {
         <Routes>
           <Route path='/' element={
             <Marketplace />
+          }></Route>
+          <Route path='/market/:key' element={
+            <SingleProduct></SingleProduct>
           }></Route>
           <Route path='*' element={
             <p>404 not found</p>
