@@ -1,3 +1,7 @@
+.product-content {
+    margin: 20px 0;
+}
+
 .card-wrap {
     display: flex;
     align-items: flex-start;
@@ -48,14 +52,6 @@
     position: relative;
     height: 100%;
     border-radius: 20px;
-}
-
-.card-slider-main__zoom {
-    position: absolute;
-    right: 24px;
-    top: 24px;
-    z-index: 10;
-    cursor: pointer;
 }
 
 .card-slider-props {
@@ -111,4 +107,334 @@
 
 .card-sliderline-item_active {
     border: 3px solid #DCA24C;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.card-title {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px;
+    margin-bottom: 16px;
+}
+
+.card-code {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.13px;
+    margin-bottom: 12px;
+}
+
+.card-props {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    margin-bottom: 8px;
+}
+
+.card-prop {
+    width: 38px;
+    height: 38px;
+    background:#181818;
+    border: 1px solid #DCA24C;
+    border-radius: 50%;
+    color: #DCA24C;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: -0.13px;
+}
+
+.card-prop_salenum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 6px;
+    background: #FF0000;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 13px;
+}
+
+.card-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-desc-title {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    margin-bottom: 12px;
+}
+
+.card-desc-text {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.13px;
+    order: 1;
+}
+
+.card-desc-infotext {
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.13px;
+}
+
+.card-desc-price {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.card-desc-price_old {
+    position: relative;
+    margin-left: 6px;
+    margin-right: 25px;
+}
+
+.card-desc-price_old::before {
+    content: '';
+    position: absolute;
+    width: 65px;
+    height: 11px;
+    background: url('../../public/img/sale-line-icon.svg');
+    top: 7px;
+    left: -2px;
+}
+
+.card-desc-size {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.card-desc-size_title {
+    color:#F1FFFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    margin-bottom: 8px;
+}
+
+.card-desc-size__items {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.card-desc-size__item {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    padding: 8px;
+    background: #000;
+    min-height: 41px;
+    min-width: 41px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card-desc-size__item_active {
+    background: #DCA24C;
+}
+
+.card-desc-quant {
+    display: flex;
+    margin-bottom: 16px;
+    column-gap: 8px;
+    align-items: center;
+}
+
+.card-desc-quant__title {
+    color:#FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.card-desc-quant__inner {
+    display: inline-flex;
+    border-radius: 20px;
+    border: 1px solid#DCA24C;
+    background:#F1FFFF;
+    padding: 4px 4px;
+    justify-content: center;
+    align-items: flex-start;
+    height: 26px;
+}
+
+.card-desc-quant__input {
+    width: 34px;
+    text-align: center;
+    color: #000;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.13px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background:#F1FFFF;
+    outline: none;
+}
+
+.card-desc-quant__minus, .card-desc-quant__plus {
+    padding: 0;
+    border: none;
+    outline: none;
+    height: 16px;
+    background:#F1FFFF;
+    color: #000;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    height: 16px;
+    width: 20px;
+    letter-spacing: -0.13px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card-desc-color {
+    display: flex;
+    margin-bottom: 16px;
+    column-gap: 20px;
+}
+
+.card-desc-color__title {
+    color:#FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.card-desc-color__items {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-desc-color__item {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #C4C4C4;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.card-desc-color__item_active {
+    border-color: #DCA24C;
+}
+
+.card-desc-buybtn {
+    margin: 24px auto 16px;
+    padding: 0;
+    outline: none;
+    border: none;
+    width: 449px;
+    height: 49px;
+    color: #F1FFFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 49px;
+    text-align: center;
+    border-radius: 20px;
+    background: #DCA24C;
+    cursor: pointer;
+}
+
+.card-desc-rollup {
+    border-top: 1px solid #F1FFFF;
+    border-bottom: 1px solid #F1FFFF;
+}
+
+.card-desc-rollup__title {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.card-desc-rollup__text {
+    display: none;
+    margin-bottom: 16px;
+    color: #FFF;
+    font-family: 'Inter';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.13px;
+}
+
+.card-desc-rollup_return .card-desc-rollup__text {
+    display: block;
+}
+
+.card-desc-more__icon {
+    transition: all 0.3s ease;
+}
+
+.card-desc-more__icon_reversed {
+    transform: rotate(180deg);
 }

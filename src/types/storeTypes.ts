@@ -21,6 +21,9 @@ export interface GoodCard {
     colors?: string[];
     img?: string[];
     notAvailable?: boolean;
+    code?: string;
+    infotext?: string;
+    sizes?: string[];
 }
 
 export interface StoreType {
