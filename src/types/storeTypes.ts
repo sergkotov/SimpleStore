@@ -1,6 +1,6 @@
 export interface UserAction {
     type: string;
-    payload: FilterDetails;
+    payload: FilterDetails | CartProductType;
 }
 
 export interface FilterDetails {
@@ -26,9 +26,15 @@ export interface GoodCard {
     sizes?: string[];
 }
 
+export type CartProductType = {
+    product: GoodCard,
+    num: number
+}
+
 export interface StoreType {
     data: GoodCard[];
     filteredData: GoodCard[];
+    cart: CartProductType[];
 }
 
 export interface ProductProps {

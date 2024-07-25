@@ -1,4 +1,4 @@
-import { GoodCard, FilterDetails } from "./types/storeTypes";
+import { GoodCard, FilterDetails, CartProductType } from "./types/storeTypes";
 import { useState, useEffect } from 'react';
 
 //api simulation
@@ -161,4 +161,22 @@ export const useDebounce = <T>(value: T, delay = 200) => {
 
 export function getReturnPolicy() {
     return "Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата! Политика возврата!"
+}
+
+export function isFilterDetailsType (item : FilterDetails | CartProductType) : FilterDetails {
+    if("priceFrom" in item && "priceTo" in item)
+        return item;
+    return {
+        priceFrom: 0,
+        priceTo: 0
+    };
+}
+
+export function isCartProductType (item : FilterDetails | CartProductType) : CartProductType {
+    if("product" in item && "num" in item)
+        return item;
+    return {
+        product: {id:"", title: "", price: 0},
+        num: 0
+    };
 }

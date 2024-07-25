@@ -1,18 +1,29 @@
-import { ChangeEvent, FC, useState } from "react"
+import { store } from "../store";
+import { ChangeEvent, MouseEvent, FC, useState } from "react"
 import { SingleProductProps } from "../types/storeTypes";
 import { endingsForWords, getReturnPolicy } from "../api";
+import { addNewProductToCart } from "../store/actionCreators";
+import { useNavigate } from "react-router-dom";
+
 
 const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
     const maxQuantity = 100;
     const [currSize, setCurrSize] = useState(0);
     const [policyOpen, setPolicyOpen] = useState(false);
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
 
     function handleQuantityInputChange(evt: ChangeEvent<HTMLInputElement>) {
         const value = evt.target.value;
         if(value.match(/^\d+$/)) {
             setQuantity(+value);
         }
+    }
+
+    function handleBuyBtnClick(evt: MouseEvent<HTMLButtonElement>) {
+        evt.preventDefault();
+        store.dispatch(addNewProductToCart({product: props.product, num: quantity}));
+        navigate('/cart');
     }
 
     return(
@@ -63,7 +74,7 @@ const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
                         ))}
                     </div>
                 </div>}
-                <button className="card-desc-buybtn">Купить</button>
+                <button className="card-desc-buybtn" onClick={(e) => handleBuyBtnClick(e)}>Купить</button>
                 <div className={"card-desc-rollup" + (policyOpen ? " card-desc-rollup_return" : "")}>
                     <div className="card-desc-rollup__title" onClick={() => {setPolicyOpen(prev => !prev)}}>
                         Политика возврата

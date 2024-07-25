@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Marketplace from './components/Marketplace';
 import SingleProduct from './components/SingleProduct';
+import Cart from './components/Cart';
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
           <Route path='/market/:key' element={
             <SingleProduct></SingleProduct>
           }></Route>
+          <Route path='/cart' element={
+            <Cart></Cart>
+          }>
+          </Route>
           <Route path='*' element={
             <p>404 not found</p>
           }></Route>
