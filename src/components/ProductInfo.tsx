@@ -1,10 +1,18 @@
-import { FC, useState } from "react"
+import { ChangeEvent, FC, useState } from "react"
 import { SingleProductProps } from "../types/storeTypes";
 import { endingsForWords, getReturnPolicy } from "../api";
 
 const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
+    const maxQuantity = 100;
     const [currSize, setCurrSize] = useState(0);
     const [policyOpen, setPolicyOpen] = useState(false);
+    const [quantity, setQuantity] = useState(1);
+
+    function handleQuantityInputChange(evt: ChangeEvent<HTMLInputElement>) {
+        if(evt.target.value.match(/^\d+$/)) {
+            setQuantity(+evt.target.value);
+        }
+    }
 
     return(
         <div className="card-info">
@@ -37,14 +45,14 @@ const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
                         ))}
                     </div>
                 </div>}
-                {/* <div className="card-desc-quant">
+                <div className="card-desc-quant">
                     <div className="card-desc-quant__title">Кол-во:</div>
                     <div className="card-desc-quant__inner">        
-                        <button className="card-desc-quant__minus">-</button>
-                        <input type="text" className="card-desc-quant__input" value="1" data-max-count="100" />
-                        <button className="card-desc-quant__plus">+</button>
+                        <button className="card-desc-quant__minus" onClick={() => setQuantity(prev => prev > 1 ? prev - 1 : prev)}>-</button>
+                        <input type="text" className="card-desc-quant__input" value={quantity} onChange={(e) => handleQuantityInputChange(e)}/>
+                        <button className="card-desc-quant__plus" onClick={() => setQuantity(prev => prev < maxQuantity ? prev + 1 : prev)}>+</button>
                     </div>                        
-                </div> */}
+                </div>
                 {props.product.colors && props.product.colors.length && <div className="card-desc-color">
                     <div className="card-desc-color__title">Цвет:</div>
                     <div className="card-desc-color__items">
