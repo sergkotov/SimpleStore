@@ -38,6 +38,44 @@ const Filtermenu : FC = () => {
             setFromPrice(currToValue);
     }
 
+    function handleFromInputChange(evt: ChangeEvent<HTMLInputElement>) {
+        let value = evt.target.value;
+        if(value === ''){
+            value = '0';
+        }
+        if(value.match(/^\d+$/)) {
+            if(+value >= 0 && +value <= maxPrice) {
+                setFromPrice(+value);
+                if(toPrice < +value)
+                    setToPrice(+value);
+            } else if(+value < 0) {
+                setFromPrice(0);
+            } else if(+value > maxPrice) {
+                setFromPrice(maxPrice);
+                setToPrice(maxPrice);
+            }
+        }
+    }
+
+    function handleToInputChange(evt: ChangeEvent<HTMLInputElement>) {
+        let value = evt.target.value;
+        if(value === ''){
+            value = '0';
+        }
+        if(value.match(/^\d+$/)) {
+            if(+value >= 0 && +value <= maxPrice) {
+                setToPrice(+value);
+                if(fromPrice > +value)
+                    setFromPrice(+value);
+            } else if(+value < 0) {
+                setFromPrice(0);
+                setToPrice(0);
+            } else if(+value > maxPrice) {
+                setToPrice(maxPrice);
+            }
+        }
+    }
+
     const handleCheckboxClick = (name: string) => {
         setCheckboxes((prevState) => {
             if(name === "new" || name === "sale") {
@@ -78,11 +116,13 @@ const Filtermenu : FC = () => {
                     </div>
                     <div className="price-filter__wrap">
                         <div className="price-filter__number price-filter__from">
-                            <input type="number" className="price-filter__min" min="0" max={maxPrice} value={fromPrice} />
+                            <input type="number" className="price-filter__min" min="0" max={maxPrice} value={fromPrice} 
+                                onChange={(e) => handleFromInputChange(e)} />
                         </div>
                         <div className="price-filter__span">до</div>
                         <div className="price-filter__number price-filter__to">
-                            <input type="number" className="price-filter__max" min="0" max={maxPrice} value={toPrice} />
+                            <input type="number" className="price-filter__max" min="0" max={maxPrice} value={toPrice} 
+                                onChange={(e) => handleToInputChange(e)} />
                         </div>
                     </div>
                 </div>

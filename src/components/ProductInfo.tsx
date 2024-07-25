@@ -9,8 +9,9 @@ const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
     const [quantity, setQuantity] = useState(1);
 
     function handleQuantityInputChange(evt: ChangeEvent<HTMLInputElement>) {
-        if(evt.target.value.match(/^\d+$/)) {
-            setQuantity(+evt.target.value);
+        const value = evt.target.value;
+        if(value.match(/^\d+$/)) {
+            setQuantity(+value);
         }
     }
 
