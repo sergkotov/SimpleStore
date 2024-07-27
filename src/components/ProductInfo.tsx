@@ -61,9 +61,9 @@ const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
                     <div className="card-desc-quant__title">Кол-во:</div>
                     <div className="card-desc-quant__inner">        
                         <button className="card-desc-quant__minus" onClick={() => setQuantity(prev => prev > 1 ? prev - 1 : prev)}>-</button>
-                        <input type="text" className="card-desc-quant__input" value={quantity} onChange={(e) => handleQuantityInputChange(e)}/>
+                        <input type="text" className="card-desc-quant__input" name="num" value={quantity} onChange={(e) => handleQuantityInputChange(e)}/>
                         <button className="card-desc-quant__plus" onClick={() => setQuantity(prev => prev < maxQuantity ? prev + 1 : prev)}>+</button>
-                    </div>                        
+                    </div>
                 </div>
                 {props.product.colors && props.product.colors.length && <div className="card-desc-color">
                     <div className="card-desc-color__title">Цвет:</div>

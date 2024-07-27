@@ -76,6 +76,10 @@ const Filtermenu : FC = () => {
         }
     }
 
+    function setSessionStorageFilter() {
+        sessionStorage.setItem('filter', JSON.stringify({fromPrice, toPrice, ...checkboxes}));
+    }
+
     const handleCheckboxClick = (name: string) => {
         setCheckboxes((prevState) => {
             if(name === "new" || name === "sale") {
@@ -83,10 +87,12 @@ const Filtermenu : FC = () => {
             }
             return prevState;
         });
+        setSessionStorageFilter();
         store.dispatch(setFilter(fromPrice, toPrice, checkboxes.new, checkboxes.sale));
     };
 
     useEffect(() => {
+        setSessionStorageFilter();
         store.dispatch(setFilter(fromPrice, toPrice, checkboxes.new, checkboxes.sale));
     }, [debouncedFromPrice, debouncedToPrice]);
 
@@ -116,12 +122,12 @@ const Filtermenu : FC = () => {
                     </div>
                     <div className="price-filter__wrap">
                         <div className="price-filter__number price-filter__from">
-                            <input type="number" className="price-filter__min" min="0" max={maxPrice} value={fromPrice} 
+                            <input type="number" className="price-filter__min" name="from" min="0" max={maxPrice} value={fromPrice} 
                                 onChange={(e) => handleFromInputChange(e)} />
                         </div>
                         <div className="price-filter__span">до</div>
                         <div className="price-filter__number price-filter__to">
-                            <input type="number" className="price-filter__max" min="0" max={maxPrice} value={toPrice} 
+                            <input type="number" className="price-filter__max" name="from" min="0" max={maxPrice} value={toPrice} 
                                 onChange={(e) => handleToInputChange(e)} />
                         </div>
                     </div>

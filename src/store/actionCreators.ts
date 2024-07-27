@@ -9,5 +9,5 @@ export function addNewProductToCart(item: CartProductType) {
 }
 
 export function removeProductFromCart(item: CartProductType) {
-    return {type: 'cart/remove', payload: {newProduct: item}};
+    return {type: 'cart/remove', payload: {...item}};
 }
