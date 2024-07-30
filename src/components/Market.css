@@ -219,7 +219,11 @@
 
 @media screen and (max-width: 1279px) {
     .store-items {
-        min-width: 703px;
+        min-width: 660px;
+    }
+
+    .store-pagination {
+        max-width: 548px;
     }
 }
 
@@ -228,6 +232,12 @@
     .store-items {
         column-gap: 19px;
         min-width: 457px;
+        justify-content: space-around;
+        row-gap: 40px;
+    }
+
+    .store-pagination {
+        max-width: none;
     }
 }
 

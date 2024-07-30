@@ -29,7 +29,7 @@ const ProductInfo: FC<SingleProductProps> = (props: SingleProductProps) => {
     return(
         <div className="card-info">
             <div className="card-title">{props.product.title}</div>
-            {props.product.code && <div className="card-title">{props.product.code}</div>}
+            {props.product.code && <div className="card-code">{props.product.code}</div>}
             <div className="card-props">
                 {props.product.new && <div className="card-prop card-prop_new">New!</div>}
                 {props.product.sale && <div className="card-prop card-prop_sale">Sale!</div>}

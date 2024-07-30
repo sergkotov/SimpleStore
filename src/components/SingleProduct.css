@@ -439,3 +439,24 @@
     text-align: center;
     transition: all 0.3s ease;
 }
+
+@media screen and (max-width: 1023px) {
+    .card-wrap {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .card-slider {
+        width: 100%;
+    }
+
+    .card-slider-main {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card-desc-buybtn {
+        width: 100%;
+    }
+}

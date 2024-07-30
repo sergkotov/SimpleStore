@@ -13,7 +13,7 @@ const SingleProductSlider: FC<SingleProductProps> = (props: SingleProductProps) 
                     </div>
                 </div>
                 <div className="card-sliderline">
-                    {props.product.img.map((item, index) => (                    
+                    {props.product.img.map((item, index) => (
                         <div key={index} className={"card-sliderline-item" + (index == props.slide ? " card-sliderline-item_active" : "")}
                             onClick={() => props.newSlide(index)}>
                             <img src={`/${item}`} alt="" className="card-sliderline-img" />
